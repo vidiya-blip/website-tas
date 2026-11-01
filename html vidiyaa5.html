@@ -1,0 +1,603 @@
+
+<
+<!
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Vidiya</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fff8fa;
+            color: #444;
+        }
+
+        header {
+            background: #d96d91;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 30px;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            background: #f5c6d5;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #74364c;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .banner {
+            background: linear-gradient(120deg, #f8cbd9, #fce9ef);
+            padding: 65px 20px;
+            text-align: center;
+        }
+
+        .banner h2 {
+            color: #a74368;
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .banner p {
+            margin-bottom: 20px;
+        }
+
+        .banner a {
+            background: #d96d91;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        .section {
+            padding: 45px 7%;
+            text-align: center;
+        }
+
+        .section h2 {
+            color: #b84f73;
+            margin-bottom: 25px;
+        }
+
+        .search {
+            width: 80%;
+            max-width: 450px;
+            padding: 12px;
+            border: 1px solid #e6aabd;
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            margin: 12px 0;
+            color: #a74368;
+        }
+
+        .harga {
+            color: #d65f85;
+            font-weight: bold;
+            margin: 12px 0;
+        }
+
+        button {
+            background: #d96d91;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        button:hover {
+            background: #b84f73;
+        }
+
+        .promo {
+            background: #f9dce5;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .kontak-card {
+            background: white;
+            max-width: 650px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            line-height: 2;
+        }
+
+        .kontak-card a {
+            color: #c6537a;
+            text-decoration: none;
+        }
+
+        #checkout .kontak-card {
+            text-align: left;
+        }
+
+        #checkout h3 {
+            color: #b84f73;
+            margin: 20px 0 12px;
+        }
+
+        #checkout input,
+        #checkout textarea,
+        #checkout select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e6aabd;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-size: 15px;
+        }
+
+        #checkout textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .item-keranjang {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f5dce4;
+        }
+
+        .item-keranjang button {
+            padding: 6px 12px;
+            margin: 0;
+        }
+
+        #totalHarga {
+            color: #d65f85;
+            margin-top: 18px;
+        }
+
+        footer {
+            background: #d96d91;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .banner h2 {
+                font-size: 27px;
+            }
+
+            .item-keranjang {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>TOKO VIDIYA</h1>
+        <p>Find Your Favorite Style</p>
+    </header>
+
+    <!-- NAVIGASI -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#produk">Produk</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#checkout">Checkout</a>
+        <a href="#kontak">Kontak</a>
+    </nav>
+
+    <!-- BANNER -->
+    <section class="banner" id="home">
+        <h2>Welcome to Toko Vidiya</h2>
+        <p>Temukan tas cantik dan stylish untuk menemani aktivitasmu!</p>
+        <a href="#produk">Belanja Sekarang</a>
+    </section>
+
+    <!-- PRODUK -->
+    <section class="section" id="produk">
+        <h2>Our Products</h2>
+
+        <input
+            type="text"
+            class="search"
+            id="search"
+            placeholder="Cari tas favoritmu..."
+        >
+
+        <div class="container" id="daftarProduk">
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600" alt="Tas Selempang Classic">
+                <h3>Tas Selempang Classic</h3>
+                <p>Tas simpel untuk kegiatan sehari-hari.</p>
+                <p class="harga">Rp89.000</p>
+                <button onclick="tambahKeranjang('Tas Selempang Classic', 89000)">Tambah ke Keranjang</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600" alt="Tas Selempang Mini">
+                <h3>Tas Selempang Mini</h3>
+                <p>Ukuran mini dengan tampilan menarik.</p>
+                <p class="harga">Rp75.000</p>
+                <button onclick="tambahKeranjang('Tas Selempang Mini', 75000)">Tambah ke Keranjang</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=600" alt="Tas Selempang Elegan">
+                <h3>Tas Selempang Elegan</h3>
+                <p>Cocok untuk acara santai maupun formal.</p>
+                <p class="harga">Rp99.000</p>
+                <button onclick="tambahKeranjang('Tas Selempang Elegan', 99000)">Tambah ke Keranjang</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600" alt="Tas Shoulder Wanita">
+                <h3>Tas Shoulder Wanita</h3>
+                <p>Model kekinian dengan desain cantik.</p>
+                <p class="harga">Rp110.000</p>
+                <button onclick="tambahKeranjang('Tas Shoulder Wanita', 110000)">Tambah ke Keranjang</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?w=600" alt="Tas Mini Fashion">
+                <h3>Tas Mini Fashion</h3>
+                <p>Desain modern untuk penampilan stylish.</p>
+                <p class="harga">Rp85.000</p>
+                <button onclick="tambahKeranjang('Tas Mini Fashion', 85000)">Tambah ke Keranjang</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600" alt="Tas Casual Wanita">
+                <h3>Tas Casual Wanita</h3>
+                <p>Nyaman digunakan untuk sehari-hari.</p>
+                <p class="harga">Rp95.000</p>
+                <button onclick="tambahKeranjang('Tas Casual Wanita', 95000)">Tambah ke Keranjang</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=600" alt="Tas Elegan Premium">
+                <h3>Tas Elegan Premium</h3>
+                <p>Tampilan elegan dengan desain premium.</p>
+                <p class="harga">Rp125.000</p>
+                <button onclick="tambahKeranjang('Tas Elegan Premium', 125000)">Tambah ke Keranjang</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600" alt="Tas Korean Style">
+                <h3>Tas Korean Style</h3>
+                <p>Model simpel dengan gaya Korea.</p>
+                <p class="harga">Rp105.000</p>
+                <button onclick="tambahKeranjang('Tas Korean Style', 105000)">Tambah ke Keranjang</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600" alt="Tas Premium Wanita">
+                <h3>Tas Premium Wanita</h3>
+                <p>Tas cantik untuk melengkapi gayamu.</p>
+                <p class="harga">Rp145.000</p>
+                <button onclick="tambahKeranjang('Tas Premium Wanita', 145000)">Tambah ke Keranjang</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CHECKOUT -->
+    <section class="section" id="checkout">
+        <h2>Keranjang & Checkout</h2>
+
+        <div class="kontak-card">
+
+            <h3>Keranjang Belanja</h3>
+
+            <div id="daftarKeranjang">
+                Belum ada produk yang dipilih.
+            </div>
+
+            <h3 id="totalHarga">Total: Rp0</h3>
+
+            <hr>
+
+            <h3>Data Pembeli</h3>
+
+            <input
+                type="text"
+                id="namaPembeli"
+                placeholder="Masukkan nama lengkap"
+            >
+
+            <textarea
+                id="alamatPembeli"
+                placeholder="Masukkan alamat pengiriman"
+            ></textarea>
+
+            <h3>Pilih Metode Pembayaran</h3>
+
+            <select id="metodePembayaran">
+                <option value="">-- Pilih Pembayaran --</option>
+                <option value="DANA">DANA</option>
+                <option value="OVO">OVO</option>
+                <option value="GoPay">GoPay</option>
+                <option value="Transfer Bank">Transfer Bank</option>
+            </select>
+
+            <button onclick="checkout()">
+                Buat Pesanan Sekarang
+            </button>
+
+        </div>
+    </section>
+
+    <!-- PROMO -->
+    <section class="promo">
+        <h2>Special Offer!</h2>
+        <p>Dapatkan tas favoritmu dengan harga menarik di Toko Vidiya.</p>
+    </section>
+
+    <!-- TENTANG -->
+    <section class="section" id="tentang">
+        <h2>About Us</h2>
+
+        <div class="kontak-card">
+            <p>
+                Toko Vidiya adalah toko online yang menyediakan berbagai
+                pilihan tas wanita dengan model menarik, stylish, dan
+                harga yang terjangkau.
+            </p>
+        </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section class="section" id="kontak">
+        <h2>Contact Us</h2>
+
+        <div class="kontak-card">
+            <p><b>Nama Pemilik:</b> Vidiya Nur Arofah</p>
+
+            <p>
+                <b>WhatsApp:</b>
+                <a href="https://wa.me/628871464591" target="_blank">
+                    08871464591
+                </a>
+            </p>
+
+            <p>
+                <b>Instagram:</b>
+                <a href="https://instagram.com/rfhvvyaaa_" target="_blank">
+                    @rfhvvyaaa_
+                </a>
+            </p>
+
+            <p>
+                <b>TikTok:</b>
+                <a href="https://tiktok.com/@pydiaa" target="_blank">
+                    @pydiaa
+                </a>
+            </p>
+
+            <p>
+                <b>Email:</b>
+                <a href="mailto:darsonokuswiyah@gmail.com">
+                    darsonokuswiyah@gmail.com
+                </a>
+            </p>
+
+            <p>
+                <b>Lokasi:</b>
+                Desa Limbangan, Kecamatan Ulujami,
+                Kabupaten Pemalang, Jawa Tengah
+            </p>
+
+            <h3>Metode Pembayaran</h3>
+            <p>DANA | OVO | GoPay | Transfer Bank</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Toko Vidiya. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        let keranjang = [];
+
+        // Menambahkan produk ke keranjang
+        function tambahKeranjang(nama, harga) {
+
+            keranjang.push({
+                nama: nama,
+                harga: harga
+            });
+
+            tampilkanKeranjang();
+
+            alert(nama + " berhasil ditambahkan ke keranjang!");
+        }
+
+        // Menampilkan isi keranjang
+        function tampilkanKeranjang() {
+
+            let daftar = document.getElementById("daftarKeranjang");
+            let total = 0;
+
+            if (keranjang.length === 0) {
+                daftar.innerHTML = "Belum ada produk yang dipilih.";
+            } else {
+
+                daftar.innerHTML = "";
+
+                keranjang.forEach(function(produk, index) {
+
+                    total += produk.harga;
+
+                    daftar.innerHTML += `
+                        <div class="item-keranjang">
+                            <div>
+                                <b>${produk.nama}</b><br>
+                                Rp${produk.harga.toLocaleString("id-ID")}
+                            </div>
+
+                            <button onclick="hapusProduk(${index})">
+                                Hapus
+                            </button>
+                        </div>
+                    `;
+                });
+            }
+
+            document.getElementById("totalHarga").innerHTML =
+                "Total: Rp" + total.toLocaleString("id-ID");
+        }
+
+        // Menghapus produk dari keranjang
+        function hapusProduk(index) {
+
+            keranjang.splice(index, 1);
+
+            tampilkanKeranjang();
+        }
+
+        // Proses checkout melalui WhatsApp
+        function checkout() {
+
+            let nama = document.getElementById("namaPembeli").value.trim();
+            let alamat = document.getElementById("alamatPembeli").value.trim();
+            let metode = document.getElementById("metodePembayaran").value;
+
+            if (keranjang.length === 0) {
+                alert("Keranjang kamu masih kosong!");
+                return;
+            }
+
+            if (nama === "" || alamat === "" || metode === "") {
+                alert("Silakan lengkapi data pembeli dan metode pembayaran!");
+                return;
+            }
+
+            let total = 0;
+
+            let rincian = keranjang.map(function(produk, index) {
+
+                total += produk.harga;
+
+                return (index + 1) + ". " +
+                    produk.nama + " - Rp" +
+                    produk.harga.toLocaleString("id-ID");
+
+            }).join("\n");
+
+            let pesan =
+                "HALO TOKO VIDIYA!\n\n" +
+                "Saya ingin memesan produk:\n\n" +
+                rincian + "\n\n" +
+                "Total Harga: Rp" + total.toLocaleString("id-ID") + "\n\n" +
+                "Nama Pembeli: " + nama + "\n" +
+                "Alamat Pengiriman: " + alamat + "\n" +
+                "Metode Pembayaran: " + metode + "\n\n" +
+                "Mohon konfirmasi pesanan saya. Terima kasih!";
+
+            let nomor = "628871464591";
+
+            let url = "https://wa.me/" + nomor +
+                "?text=" + encodeURIComponent(pesan);
+
+            window.open(url, "_blank");
+        }
+
+        // Fitur pencarian produk
+        document.getElementById("search").addEventListener("input", function() {
+
+            let kataKunci = this.value.toLowerCase();
+
+            let produk = document.querySelectorAll("#daftarProduk .card");
+
+            produk.forEach(function(card) {
+
+                let namaProduk = card.querySelector("h3").textContent.toLowerCase();
+
+                if (namaProduk.includes(kataKunci)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+
+            });
+        });
+
+    </script>
+
+</body>
+</html>
